@@ -1,0 +1,24 @@
+plugins {
+    id "org.gretty" version "2.2.0"
+}
+plugins {
+    id "com.eriwen.gradle.js" version "2.14.1"
+}
+apply plugin: 'war'
+apply from: "$rootDir/gradle/jsDependencies.gradle"
+apply from: "$rootDir/gradle/jsOptimize.gradle"
+
+repositories {
+    maven {
+        url "https://repo1.maven.org/maven2/"
+    }
+
+    maven {
+        url "https://repo.spring.io/plugins-release/"
+    }
+}
+dependencies {
+    compile project(':repository')
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+}
